@@ -1,7 +1,9 @@
 # Ranker
 
 <p align="center">
-  <img src="https://img.shields.io/badge/ranker.zigsim.eu-7fd0ff?style=for-the-badge&logo=globe&logoColor=white" alt="ranker.zigsim.eu" />
+  <a href="https://ranker.zigsim.eu" target="_blank" rel="noreferrer">
+    <img src="https://img.shields.io/badge/ranker.zigsim.eu-7fd0ff?style=for-the-badge&logo=globe&logoColor=white" alt="ranker.zigsim.eu" />
+  </a>
 </p>
 
 > ⚠️ This is a fully vibecoded project.
