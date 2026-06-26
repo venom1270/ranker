@@ -1,8 +1,8 @@
 # Ranker
 
-<div align="center" style="margin: 1.5rem 0; padding: 0.8rem 1.2rem; border: 1px solid #7fd0ff; border-radius: 999px; background: rgba(127, 208, 255, 0.12); color: #7fd0ff; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
-  zigsim.eu
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/ranker.zigsim.eu-7fd0ff?style=for-the-badge&logo=globe&logoColor=white" alt="ranker.zigsim.eu" />
+</p>
 
 > ⚠️ This is a fully vibecoded project.
 > 🤖 It was made using GitHub Copilot Free, under the new billing setup, and used up exactly 50% of the available free credits.
