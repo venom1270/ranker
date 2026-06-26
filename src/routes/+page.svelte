@@ -496,6 +496,8 @@
 		-webkit-appearance: none;
 		cursor: pointer;
 		accent-color: #7fd0ff;
+		touch-action: none;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	input[type='range']::-webkit-slider-runnable-track {
@@ -596,6 +598,7 @@
 		align-items: center;
 		gap: 0.75rem;
 		margin-bottom: 0.7rem;
+		isolation: isolate;
 	}
 
 	.score-value {

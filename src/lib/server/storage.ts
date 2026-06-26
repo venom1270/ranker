@@ -61,11 +61,12 @@ export async function createList(input: { title: string; password?: string; item
 
 	if (listError || !listData) throw new Error(listError?.message ?? 'Could not create list');
 
-	const itemsToInsert = input.items.map((item) => ({
+	const itemsToInsert = input.items.map((item, index) => ({
 		id: randomUUID(),
 		list_id: listId,
 		name: item.name,
-		creator_score: item.score
+		creator_score: item.score,
+		order_index: index
 	}));
 
 	const { error: itemsError } = await supabase.from('ranks_items').insert(itemsToInsert);
@@ -136,7 +137,7 @@ export async function getList(id: string) {
 		.from('ranks_items')
 		.select('*')
 		.eq('list_id', id)
-		.order('name');
+		.order('order_index', { ascending: true });
 
 	if (itemsError) throw new Error(itemsError.message);
 
