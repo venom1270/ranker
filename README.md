@@ -1,42 +1,30 @@
-# sv
+# Ranker
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+<div align="center" style="margin: 1.5rem 0; padding: 0.8rem 1.2rem; border: 1px solid #7fd0ff; border-radius: 999px; background: rgba(127, 208, 255, 0.12); color: #7fd0ff; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;">
+  zigsim.eu
+</div>
 
-## Creating a project
+> ⚠️ This is a fully vibecoded project.
+> 🤖 It was made using GitHub Copilot Free, under the new billing setup, and used up exactly 50% of the available free credits.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Ranker is a simple SvelteKit app for creating a ranking list, sharing it with someone else, and comparing how both people scored the same items.
 
-```sh
-# create a new project
-npx sv create my-app
-```
+## Project structure
 
-To recreate this project with the same configuration:
+- Frontend: SvelteKit pages and UI in the src/routes and src/lib folders.
+- Backend: server-side API routes under src/routes/api that handle list creation, loading, scoring, and deletion.
+- Storage: Supabase is used for persistence through the server-side storage layer.
+- Main features: create a list, set creator scores, protect it with a password, share a link, let someone else rank it, and compare the results.
 
-```sh
-# recreate this project
-npx sv@0.16.1 create --template minimal --types ts --add prettier eslint --install npm ranker
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Run locally
 
 ```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+## Build
 
 ```sh
 npm run build
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
