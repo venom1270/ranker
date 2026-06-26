@@ -338,11 +338,25 @@
 
 				<div class="scores">
 					{#each createdList.items as item}
-						<label class="score-row">
+						<div class="score-row">
 							<span>{item.name}</span>
-							<input type="range" min="1" max="10" bind:value={respondentScores[item.id]} />
+							<div class="score-buttons" role="group" aria-label={`Score for ${item.name}`}>
+								{#each Array.from({ length: 10 }, (_, value) => value + 1) as score}
+									<button
+										type="button"
+										class="score-button"
+										class:selected={respondentScores[item.id] === score}
+										aria-pressed={respondentScores[item.id] === score}
+										onclick={() => {
+											respondentScores[item.id] = score;
+										}}
+									>
+										{score}
+									</button>
+								{/each}
+							</div>
 							<strong class="score-value">{respondentScores[item.id] ?? 5}</strong>
-						</label>
+						</div>
 					{/each}
 				</div>
 
@@ -487,51 +501,33 @@
 		color: #f4faff;
 	}
 
-	input[type='range'] {
-		width: 100%;
-		padding: 0;
-		border: none;
-		background: transparent;
-		appearance: none;
-		-webkit-appearance: none;
-		cursor: pointer;
-		accent-color: #7fd0ff;
-		touch-action: none;
-		-webkit-tap-highlight-color: transparent;
+	.score-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
 	}
 
-	input[type='range']::-webkit-slider-runnable-track {
-		height: 0.45rem;
+	.score-button {
+		min-width: 2.2rem;
+		padding: 0.45rem 0.55rem;
 		border-radius: 999px;
-		background: linear-gradient(90deg, #3fa5ff 0%, #8d5cff 100%);
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		background: rgba(255, 255, 255, 0.06);
+		color: #f4faff;
+		font-weight: 700;
+		transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 	}
 
-	input[type='range']::-webkit-slider-thumb {
-		appearance: none;
-		-webkit-appearance: none;
-		margin-top: -0.35rem;
-		width: 1.1rem;
-		height: 1.1rem;
-		border-radius: 999px;
-		border: 2px solid #8d5cff;
-		background: #f4faff;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	.score-button:hover {
+		transform: translateY(-1px);
+		background: rgba(127, 208, 255, 0.16);
+		border-color: rgba(127, 208, 255, 0.35);
 	}
 
-	input[type='range']::-moz-range-track {
-		height: 0.45rem;
-		border-radius: 999px;
-		background: linear-gradient(90deg, #3fa5ff 0%, #8d5cff 100%);
-		border: none;
-	}
-
-	input[type='range']::-moz-range-thumb {
-		width: 1.1rem;
-		height: 1.1rem;
-		border-radius: 999px;
-		border: 2px solid #8d5cff;
-		background: #f4faff;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+	.score-button.selected {
+		background: linear-gradient(135deg, #3fa5ff, #8d5cff);
+		border-color: transparent;
+		box-shadow: 0 6px 16px rgba(63, 165, 255, 0.22);
 	}
 
 	button {
@@ -594,17 +590,28 @@
 
 	.score-row {
 		display: grid;
-		grid-template-columns: 1.2fr minmax(0, 1.6fr) auto;
+		grid-template-columns: 1.2fr minmax(0, 1fr) auto;
 		align-items: center;
 		gap: 0.75rem;
 		margin-bottom: 0.7rem;
+		padding: 0.7rem 0.8rem;
+		border-radius: 14px;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.08);
 		isolation: isolate;
+	}
+
+	.score-row span {
+		font-weight: 600;
 	}
 
 	.score-value {
 		min-width: 2.4rem;
 		text-align: center;
 		font-variant-numeric: tabular-nums;
+		padding: 0.45rem 0.6rem;
+		border-radius: 999px;
+		background: rgba(127, 208, 255, 0.16);
 	}
 
 	.draft-items {
@@ -760,6 +767,18 @@
 		.score-row {
 			grid-template-columns: 1fr;
 			align-items: start;
+		}
+
+		.score-row span {
+			grid-column: 1 / -1;
+		}
+
+		.score-buttons {
+			margin-top: 0.25rem;
+		}
+
+		.score-value {
+			justify-self: end;
 		}
 
 		.feed-item {
