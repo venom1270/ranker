@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Ranker icon">
+  <rect width="64" height="64" rx="14" fill="#07111f"/>
+  <path d="M18 46V22h8v24zm10-14v-4h18v4zm0 8v-4h14v4z" fill="#7fd0ff"/>
+  <circle cx="44" cy="22" r="8" fill="#8d5cff"/>
+</svg>
